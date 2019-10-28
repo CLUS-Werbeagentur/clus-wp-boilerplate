@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 
   <main>
-    <h1>Überschrift 2</h1>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <?php if (have_posts()) : while (have_posts()) : the_post();
+      get_template_part('partials/elements');
+    endwhile; endif; ?>
   </main>
 
 <?php get_footer(); ?>
