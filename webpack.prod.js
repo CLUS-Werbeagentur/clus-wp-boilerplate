@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 // Export settings
 module.exports = {
@@ -15,25 +16,24 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/env',
-                {
-                  useBuiltIns: 'entry',
-                  corejs: '2'
-                }
-              ]
-            ]
-          }
-        }
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.s[c|a]ss$/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'resolve-url-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          'import-glob-loader',
+        ],
       },
       {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
@@ -41,10 +41,10 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'fonts'
-            }
-          }
-        ]
+              outputPath: 'fonts',
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -52,10 +52,10 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'images'
-            }
-          }
-        ]
+              outputPath: 'images',
+            },
+          },
+        ],
       },
       {
         test: /\.(svg)$/,
@@ -63,33 +63,38 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'images'
-            }
+              outputPath: 'images',
+            },
           },
           {
             loader: 'svgo-loader',
             options: {
-              plugins: [{ removeTitle: true }, { convertColors: { shorthex: false } }, { convertPathData: false }]
-            }
-          }
-        ]
-      }
-    ]
+              plugins: [
+                { removeTitle: true },
+                { convertColors: { shorthex: false } },
+                { convertPathData: false },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   output: {
     filename: 'js/[name].[hash:8].js',
     path: path.join(__dirname, '/build'),
-    publicPath: process.env.PUBLIC_PATH
+    publicPath: process.env.PUBLIC_PATH,
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin(),
     new CleanWebpackPlugin(),
     new ManifestPlugin(),
-    new MiniCssExtractPlugin({ filename: 'css/[name].[hash:8].css' })
+    new MiniCssExtractPlugin({ filename: 'css/[name].[hash:8].css' }),
   ],
   optimization: {
-    minimizer: [new TerserPlugin()]
+    minimizer: [new TerserPlugin()],
   },
   stats: {
-    modules: false
-  }
+    modules: false,
+  },
 }

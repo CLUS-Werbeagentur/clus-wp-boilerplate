@@ -2,6 +2,7 @@ require('dotenv').config()
 const webpack = require('webpack')
 const path = require('path')
 const chokidar = require('chokidar')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 // Configure dev server
 const configureDevServer = () => {
@@ -18,9 +19,9 @@ const configureDevServer = () => {
         target: process.env.URL,
         changeOrigin: true,
         headers: {
-          'X-Dev-Server-Proxy': process.env.URL
-        }
-      }
+          'X-Dev-Server-Proxy': process.env.URL,
+        },
+      },
     },
     // Watch php files and reload window on change
     before(app, server) {
@@ -33,12 +34,12 @@ const configureDevServer = () => {
           ignoreInitial: true,
           ignorePermissionErrors: true,
           persistent: true,
-          usePolling: true
+          usePolling: true,
         })
         .on('all', () => {
           server.sockWrite(server.sockets, 'content-changed')
         })
-    }
+    },
   }
 }
 
@@ -57,16 +58,18 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
+          { loader: 'resolve-url-loader' },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+          { loader: 'import-glob-loader' },
+        ],
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -75,17 +78,20 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             outputPath: path.join(__dirname, '/build'),
-            publicPath: 'http://localhost:3000/'
-          }
-        }
-      }
-    ]
+            publicPath: 'http://localhost:3000/',
+          },
+        },
+      },
+    ],
   },
   output: {
     filename: 'dev-bundle.js',
     path: path.join(__dirname, '/build'),
-    publicPath: '/'
+    publicPath: '/',
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
-  stats: 'minimal'
+  plugins: [
+    new FriendlyErrorsWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  stats: 'minimal',
 }

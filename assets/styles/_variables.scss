@@ -1,0 +1,12 @@
+@import '../../node_modules/normalize.css/normalize.css';
+
+@font-face {
+  font-family: 'Radikal';
+  src: url('./../fonts/font.woff2') format('woff2');
+  src: url('./../fonts/font.woff') format('woff');
+}
+
+$font-family: 'Radikal', sans-serif;
+
+$color-white: #ffffff;
+$color-black: #000000;

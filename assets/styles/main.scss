@@ -1,13 +1,5 @@
-@font-face {
-  font-family: 'Radikal';
-  src: url('./../fonts/font.woff2') format('woff2');
-  src: url('./../fonts/font.woff') format('woff');
-}
-
-$font-family: 'Radikal', sans-serif;
-
-$color-white: #ffffff;
-$color-black: #000000;
+@import 'variables';
+@import 'elements/*';
 
 html {
   box-sizing: border-box;
@@ -16,13 +8,11 @@ html {
   font-weight: normal;
   line-height: 1.3;
   color: purple;
-  background-image: url('./../images/icon.svg');
-  background-repeat: no-repeat;
 }
 
 h1 {
   font-size: 2rem;
-  color: pink;
+  color: $color-black;
   transition: all 0.5s;
   user-select: none;
 }
