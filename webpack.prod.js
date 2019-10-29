@@ -5,10 +5,12 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
 
 // Export settings
 module.exports = {
-  devtool: 'none',
+  devtool: 'source-map',
   entry: { bundle: process.env.ENTRY },
   mode: 'production',
   module: {
@@ -19,12 +21,32 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader'],
       },
       {
-        test: /\.s[c|a]ss$/,
+        test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                autoprefixer(),
+                cssnano({
+                  preset: 'default',
+                  discardComments: {
+                    removeAll: true,
+                  },
+                }),
+              ],
+              minimize: true,
+            },
+          },
           'resolve-url-loader',
           {
             loader: 'sass-loader',
@@ -42,6 +64,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'fonts',
+              name: '[name].[hash:8].[ext]',
             },
           },
         ],
@@ -50,9 +73,11 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
+              limit: 10000,
               outputPath: 'images',
+              name: '[name].[hash:8].[ext]',
             },
           },
         ],
@@ -64,6 +89,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'images',
+              name: '[name].[hash:8].[ext]',
             },
           },
           {

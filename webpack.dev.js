@@ -46,7 +46,7 @@ const configureDevServer = () => {
 // Export settings
 module.exports = {
   devServer: configureDevServer(),
-  devtool: 'inline-cheap-module-source-map',
+  devtool: 'eval',
   entry: process.env.ENTRY,
   mode: 'development',
   module: {
@@ -72,7 +72,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot|svg|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
         use: {
           loader: 'file-loader',
           options: {
