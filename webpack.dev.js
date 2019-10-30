@@ -13,6 +13,8 @@ const configureDevServer = () => {
     open: true,
     inline: true,
     overlay: true,
+    noInfo: true,
+    stats: 'minimal',
     port: 3000,
     proxy: {
       '**': {
@@ -52,7 +54,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s[c|a]ss$/,
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+        resolve: { extensions: ['.js', '.jsx'] },
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /node_modules/,
         use: [
           { loader: 'style-loader' },
           {

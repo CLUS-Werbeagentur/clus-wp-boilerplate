@@ -3,7 +3,6 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
@@ -19,6 +18,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
+        resolve: { extensions: ['.js', '.jsx'] },
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -117,10 +117,9 @@ module.exports = {
     new ManifestPlugin(),
     new MiniCssExtractPlugin({ filename: 'css/[name].[hash:8].css' }),
   ],
-  optimization: {
-    minimizer: [new TerserPlugin()],
-  },
   stats: {
     modules: false,
+    entrypoints: false,
+    chunks: false,
   },
 }
