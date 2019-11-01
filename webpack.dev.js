@@ -2,7 +2,8 @@ require('dotenv').config()
 const webpack = require('webpack')
 const path = require('path')
 const chokidar = require('chokidar')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const StylelintPlugin = require('stylelint-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // Configure dev server
 const configureDevServer = () => {
@@ -14,7 +15,7 @@ const configureDevServer = () => {
     inline: true,
     overlay: true,
     noInfo: true,
-    stats: 'minimal',
+    quiet: true,
     port: 3000,
     proxy: {
       '**': {
@@ -47,16 +48,16 @@ const configureDevServer = () => {
 
 // Export settings
 module.exports = {
+  mode: 'development',
   devServer: configureDevServer(),
   devtool: 'eval',
   entry: process.env.ENTRY,
-  mode: 'development',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
         resolve: { extensions: ['.js', '.jsx'] },
       },
       {
@@ -99,8 +100,8 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new FriendlyErrorsWebpackPlugin(),
+    new FriendlyErrorsPlugin(),
+    new StylelintPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
-  stats: 'minimal',
 }

@@ -1,8 +1,6 @@
 @import 'variables';
 @import 'elements/*';
 
-// Hoi Kevin
-
 html {
   box-sizing: border-box;
   font-size: 24px;
@@ -18,6 +16,10 @@ h1 {
   transition: all 0.5s;
   user-select: none;
   background-image: url('../images/small.jpg');
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-position: center right;
+}
+
+a {
+  line-height: 0.5;
 }

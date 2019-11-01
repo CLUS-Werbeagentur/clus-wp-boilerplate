@@ -3,21 +3,35 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const StylelintPlugin = require('stylelint-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
 // Export settings
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
   entry: { bundle: process.env.ENTRY },
-  mode: 'production',
+  stats: {
+    all: false,
+    modules: true,
+    maxModules: 0,
+    hash: true,
+    timings: true,
+    assets: true,
+    assetsSort: '!size',
+    performance: true,
+  },
+  performance: {
+    maxAssetSize: 250000,
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
         resolve: { extensions: ['.js', '.jsx'] },
       },
       {
@@ -112,14 +126,10 @@ module.exports = {
     publicPath: process.env.PUBLIC_PATH,
   },
   plugins: [
-    new FriendlyErrorsWebpackPlugin(),
+    new FriendlyErrorsPlugin(),
     new CleanWebpackPlugin(),
+    new StylelintPlugin(),
     new ManifestPlugin(),
     new MiniCssExtractPlugin({ filename: 'css/[name].[hash:8].css' }),
   ],
-  stats: {
-    modules: false,
-    entrypoints: false,
-    chunks: false,
-  },
 }
