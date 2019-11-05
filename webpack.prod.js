@@ -21,10 +21,10 @@ module.exports = {
     timings: true,
     assets: true,
     assetsSort: '!size',
-    performance: true,
+    performance: true
   },
   performance: {
-    maxAssetSize: 250000,
+    maxAssetSize: 250000
   },
   module: {
     rules: [
@@ -32,7 +32,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
-        resolve: { extensions: ['.js', '.jsx'] },
+        resolve: { extensions: ['.js', '.jsx'] }
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -42,8 +42,8 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
-            },
+              importLoaders: 1
+            }
           },
           {
             loader: 'postcss-loader',
@@ -54,22 +54,22 @@ module.exports = {
                 cssnano({
                   preset: 'default',
                   discardComments: {
-                    removeAll: true,
-                  },
-                }),
+                    removeAll: true
+                  }
+                })
               ],
-              minimize: true,
-            },
+              minimize: true
+            }
           },
           'resolve-url-loader',
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
-          'import-glob-loader',
-        ],
+          'import-glob-loader'
+        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
@@ -78,10 +78,10 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'fonts',
-              name: '[name].[hash:8].[ext]',
-            },
-          },
-        ],
+              name: '[name].[hash:8].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -91,10 +91,10 @@ module.exports = {
             options: {
               limit: 10000,
               outputPath: 'images',
-              name: '[name].[hash:8].[ext]',
-            },
-          },
-        ],
+              name: '[name].[hash:8].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.(svg)$/,
@@ -103,8 +103,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'images',
-              name: '[name].[hash:8].[ext]',
-            },
+              name: '[name].[hash:8].[ext]'
+            }
           },
           {
             loader: 'svgo-loader',
@@ -112,24 +112,24 @@ module.exports = {
               plugins: [
                 { removeTitle: true },
                 { convertColors: { shorthex: false } },
-                { convertPathData: false },
-              ],
-            },
-          },
-        ],
-      },
-    ],
+                { convertPathData: false }
+              ]
+            }
+          }
+        ]
+      }
+    ]
   },
   output: {
     filename: 'js/[name].[hash:8].js',
     path: path.join(__dirname, '/build'),
-    publicPath: process.env.PUBLIC_PATH,
+    publicPath: process.env.PUBLIC_PATH
   },
   plugins: [
     new FriendlyErrorsPlugin(),
     new CleanWebpackPlugin(),
     new StylelintPlugin(),
     new ManifestPlugin(),
-    new MiniCssExtractPlugin({ filename: 'css/[name].[hash:8].css' }),
-  ],
+    new MiniCssExtractPlugin({ filename: 'css/[name].[hash:8].css' })
+  ]
 }

@@ -22,9 +22,9 @@ const configureDevServer = () => {
         target: process.env.URL,
         changeOrigin: true,
         headers: {
-          'X-Dev-Server-Proxy': process.env.URL,
-        },
-      },
+          'X-Dev-Server-Proxy': process.env.URL
+        }
+      }
     },
     // Watch php files and reload window on change
     before(app, server) {
@@ -37,12 +37,12 @@ const configureDevServer = () => {
           ignoreInitial: true,
           ignorePermissionErrors: true,
           persistent: true,
-          usePolling: true,
+          usePolling: true
         })
         .on('all', () => {
           server.sockWrite(server.sockets, 'content-changed')
         })
-    },
+    }
   }
 }
 
@@ -58,7 +58,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
-        resolve: { extensions: ['.js', '.jsx'] },
+        resolve: { extensions: ['.js', '.jsx'] }
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -68,18 +68,18 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           { loader: 'resolve-url-loader' },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
-          { loader: 'import-glob-loader' },
-        ],
+          { loader: 'import-glob-loader' }
+        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
@@ -88,20 +88,20 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             outputPath: path.join(__dirname, '/build'),
-            publicPath: 'http://localhost:3000/',
-          },
-        },
-      },
-    ],
+            publicPath: 'http://localhost:3000/'
+          }
+        }
+      }
+    ]
   },
   output: {
     filename: 'dev-bundle.js',
     path: path.join(__dirname, '/build'),
-    publicPath: '/',
+    publicPath: '/'
   },
   plugins: [
     new FriendlyErrorsPlugin(),
     new StylelintPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }
