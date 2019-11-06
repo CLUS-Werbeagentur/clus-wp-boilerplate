@@ -24,7 +24,8 @@ module.exports = {
     performance: true
   },
   performance: {
-    maxAssetSize: 250000
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
   },
   module: {
     rules: [
@@ -78,7 +79,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'fonts',
-              name: '[name].[hash:8].[ext]'
+              name: '[hash:12].[ext]'
             }
           }
         ]
@@ -91,7 +92,7 @@ module.exports = {
             options: {
               limit: 10000,
               outputPath: 'images',
-              name: '[name].[hash:8].[ext]'
+              name: '[hash:12].[ext]'
             }
           }
         ]
@@ -103,7 +104,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'images',
-              name: '[name].[hash:8].[ext]'
+              name: '[hash:12].[ext]'
             }
           },
           {
@@ -121,7 +122,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'js/[name].[hash:8].js',
+    filename: 'js/[name].[hash:12].js',
     path: path.join(__dirname, '/build'),
     publicPath: process.env.PUBLIC_PATH
   },
@@ -129,7 +130,10 @@ module.exports = {
     new FriendlyErrorsPlugin(),
     new CleanWebpackPlugin(),
     new StylelintPlugin(),
-    new ManifestPlugin(),
-    new MiniCssExtractPlugin({ filename: 'css/[name].[hash:8].css' })
+    new ManifestPlugin({
+      filter: file =>
+        !file.path.match(/\.(woff(2)?|ttf|eot|svg|png|jpg|gif|map)(\?v=\d+\.\d+\.\d+)?$/)
+    }),
+    new MiniCssExtractPlugin({ filename: 'css/[name].[hash:12].css' })
   ]
 }
