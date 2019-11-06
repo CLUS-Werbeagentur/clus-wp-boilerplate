@@ -9,3 +9,8 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+
+<header>
+  <h1>Webpack Playground</h1>
+  <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => 'ul')); ?>
+</header>

@@ -90,10 +90,13 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10000,
+              limit: 10 * 1024,
               outputPath: 'images',
               name: '[hash:12].[ext]'
             }
+          },
+          {
+            loader: 'image-webpack-loader'
           }
         ]
       },
@@ -101,10 +104,10 @@ module.exports = {
         test: /\.(svg)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'svg-url-loader',
             options: {
-              outputPath: 'images',
-              name: '[hash:12].[ext]'
+              limit: 10 * 1024,
+              iesafe: true
             }
           },
           {

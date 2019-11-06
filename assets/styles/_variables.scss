@@ -1,14 +1,20 @@
 @import '../../node_modules/normalize.css/normalize.css';
 
 @font-face {
-  font-family: 'Radikal';
-  src: url('./../fonts/font.woff2') format('woff2');
-  src: url('./../fonts/font.woff') format('woff');
+  font-family: 'Brandon';
+  src: url('./../fonts/BrandonText.woff2') format('woff2');
+  src: url('./../fonts/BrandonText.woff') format('woff');
 }
 
-$font-family: 'Radikal', sans-serif;
+$font-family: 'Brandon', sans-serif;
 
 $color-white: #ffffff;
 $color-black: #000000;
-$color-red: #f00;
-$color-green: green;
+$color-teal: #009682;
+
+$size-content: 900px;
+$size-viewport: 90vw;
+
+$break-l: 1200px;
+$break-m: 900px;
+$break-s: 700px;

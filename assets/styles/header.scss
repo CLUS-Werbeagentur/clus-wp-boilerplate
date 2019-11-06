@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  max-width: $size-content;
+  width: $size-viewport;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  background: $color-white;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+
+  li {
+    margin: 1rem;
+  }
+
+  a:link,
+  a:visited {
+    color: $color-black;
+  }
+
+  a:hover,
+  a:active {
+    color: $color-teal;
+  }
+}

@@ -62,6 +62,14 @@ add_action( 'admin_bar_menu', 'made_with_clus_link', 999 );
 //----------------------------------------------------------
 add_theme_support( 'title-tag' );
 
+// Menus
+//----------------------------------------------------------
+add_action( 'after_setup_theme', 'register_menu' );
+
+function register_menu() {
+  register_nav_menu( 'primary', 'Hauptmenü' );
+}
+
 // Disable support for comments and trackbacks in post types
 //----------------------------------------------------------
 function gsa_disable_comments_post_types_support() {
