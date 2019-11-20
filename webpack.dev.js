@@ -16,11 +16,13 @@ const configureDevServer = () => {
     overlay: true,
     noInfo: true,
     quiet: true,
+    compress: true,
     port: 3000,
     proxy: {
       '**': {
         target: process.env.URL,
         changeOrigin: true,
+        autoRewrite: true,
         headers: {
           'X-Dev-Server-Proxy': process.env.URL
         }
@@ -51,7 +53,9 @@ module.exports = {
   mode: 'development',
   devServer: configureDevServer(),
   devtool: 'eval',
-  entry: process.env.ENTRY,
+  entry: {
+    bundle: ['./wds-proxy-urls.js', process.env.ENTRY]
+  },
   module: {
     rules: [
       {

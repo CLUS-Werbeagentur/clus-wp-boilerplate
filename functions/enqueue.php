@@ -6,23 +6,18 @@ function isDev(){
 }
 
 function enqueue_js() {
-  // Include files only when in dev mode.
   if ( isDev() ) {
-    wp_enqueue_script( 'script', 'http://localhost:3000/dev-bundle.js', [], '1.0.0', true );
+    wp_enqueue_script( 'script', 'http://localhost:3000/dev-bundle.js', [], null, true );
   }
 
-  // Include files only when in live mode.
   if ( ! isDev() ) {
-    wp_enqueue_script( 'script', get_manifest_file( 'bundle.js' ), [], '1.0.0', true );
+    wp_enqueue_script( 'script', get_manifest_file( 'bundle.js' ), [], null, true );
   }
 }
 
 function enqueue_css() {
-  // Include files only when in dev mode. Our CSS will be served via JavaScript so it's not necessary to enqueue that here.
-
-  // Include files only when in live mode.
   if ( ! isDev() ) {
-    wp_enqueue_style( 'styles', get_manifest_file( 'bundle.css' ), [], '1.0.0' );
+    wp_enqueue_style( 'styles', get_manifest_file( 'bundle.css' ), [], null );
   }
 }
 
