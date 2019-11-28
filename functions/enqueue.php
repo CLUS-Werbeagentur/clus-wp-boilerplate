@@ -7,7 +7,7 @@ function isDev(){
 
 function enqueue_js() {
   if ( isDev() ) {
-    wp_enqueue_script( 'script', 'http://localhost:3000/dev-bundle.js', [], null, true );
+    wp_enqueue_script( 'script', '/dev-bundle.js', [], null, true );
   }
 
   if ( ! isDev() ) {

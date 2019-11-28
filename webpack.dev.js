@@ -1,78 +1,42 @@
 require('dotenv').config()
 const webpack = require('webpack')
 const path = require('path')
-const chokidar = require('chokidar')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-
-// Configure dev server
-const configureDevServer = () => {
-  return {
-    contentBase: path.join(__dirname, 'build'),
-    host: 'localhost',
-    hot: true,
-    open: true,
-    inline: true,
-    overlay: true,
-    noInfo: true,
-    quiet: true,
-    compress: true,
-    port: 3000,
-    proxy: {
-      '**': {
-        target: process.env.URL,
-        changeOrigin: true,
-        autoRewrite: true,
-        headers: {
-          'X-Dev-Server-Proxy': process.env.URL
-        }
-      }
-    },
-    // Watch php files and reload window on change
-    before(app, server) {
-      const files = ['**/*.php']
-      chokidar
-        .watch(files, {
-          alwaysStat: true,
-          atomic: false,
-          followSymlinks: false,
-          ignoreInitial: true,
-          ignorePermissionErrors: true,
-          persistent: true,
-          usePolling: true
-        })
-        .on('all', () => {
-          server.sockWrite(server.sockets, 'content-changed')
-        })
-    }
-  }
-}
+const autoprefixer = require('autoprefixer')
 
 // Export settings
 module.exports = {
   mode: 'development',
-  devServer: configureDevServer(),
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   entry: {
-    bundle: ['./wds-proxy-urls.js', process.env.ENTRY]
+    bundle: ['webpack-hot-middleware/client', process.env.ENTRY]
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }],
+        include: path.resolve(__dirname, 'assets/scripts'),
+        use: [{ loader: 'babel-loader' }],
         resolve: { extensions: ['.js', '.jsx'] }
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'assets/styles'),
         use: [
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
             options: {
               sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              ident: 'postcss',
+              plugins: [autoprefixer()]
             }
           },
           { loader: 'resolve-url-loader' },
@@ -90,9 +54,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]',
-            outputPath: path.join(__dirname, '/build'),
-            publicPath: 'http://localhost:3000/'
+            name: '[name].[ext]'
           }
         }
       }

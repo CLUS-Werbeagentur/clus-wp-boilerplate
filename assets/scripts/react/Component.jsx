@@ -19,29 +19,16 @@ class ExampleComponent extends Component {
   render() {
     const { value } = this.state
     return (
-      <div className="component">
-        <div className="value">Der aktuelle Wert ist: {value}</div>
-        <div className="increase">
-          <button type="button" onClick={this.handleIncrease}>
+      <div className='component'>
+        <div className='value'>Der aktuelle Wert ist: {value}</div>
+        <div className='increase'>
+          <button type='button' onClick={this.handleIncrease}>
             Wert erhöhen
           </button>
         </div>
       </div>
     )
   }
-
-  // render() {
-  //   return (
-  //     <div className="component">
-  //       <div className="value">Der aktuelle Wert ist: {this.state.value}</div>
-  //       <div className="increase">
-  //         <a href="#" onClick={this.handleIncrease}>
-  //           Wert erhöhen
-  //         </a>
-  //       </div>
-  //     </div>
-  //   )
-  // }
 }
 
 ExampleComponent.propTypes = {
