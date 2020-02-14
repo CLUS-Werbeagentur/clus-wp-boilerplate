@@ -1,5 +1,3 @@
-<div class="element element--text">
-  <div class="user"></div>
-  <div class="cat"></div>
+<div class="element element--text content-text-area">
   <?php the_sub_field('content') ?>
 </div>

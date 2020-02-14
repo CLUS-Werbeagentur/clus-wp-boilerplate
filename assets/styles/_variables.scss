@@ -1,19 +1,14 @@
-@import '../../node_modules/normalize.css/normalize.css';
+$font-family: sans-serif;
 
-@font-face {
-  font-family: 'Brandon';
-  src: url('./../fonts/BrandonText.woff2') format('woff2');
-  src: url('./../fonts/BrandonText.woff') format('woff');
-}
-
-$font-family: 'Brandon', sans-serif;
+$base-font-size: 20px;
 
 $color-white: #ffffff;
 $color-black: #000000;
-$color-teal: #009682;
 
 $size-content: 900px;
-$size-viewport: 90vw;
+$size-viewport: 92vw;
+
+$transition: 100ms ease-in-out;
 
 $break-l: 1200px;
 $break-m: 900px;

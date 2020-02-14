@@ -1,0 +1,47 @@
+// Box-sizing for everything
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+// SVG sizing for IE
+.svg-icon {
+  max-width: 100%;
+  display: inline-block;
+  position: relative;
+  user-select: none;
+
+  canvas {
+    display: block;
+    width: 100%;
+    visibility: hidden;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Visually hide elements for screen-reader and other stuff
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// No wrap
+.no-wrap {
+  white-space: nowrap;
+}
