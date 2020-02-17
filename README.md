@@ -4,7 +4,8 @@ Version 1.0
 
 ## Features
 
-- Hot module replacment for JS & CSS
+- Hot module replacement for JS & CSS
+- Autoreload for PHP
 - SASS- & SCSS-Support
 - JS-bundling & compiling with Babel
 - Sourcemapping for Development & Production
@@ -13,6 +14,7 @@ Version 1.0
 - SVGO-optimization for SVG-assets
 - Cache-busting with hashed filenames
 - Minifying of JS & CSS for production
+- Includes standard content elements for text, images & text-image-combination
 - React ready
 
 ## Usage
@@ -34,11 +36,21 @@ PUBLIC_PATH="/wp-content/themes/YOUR THEME NAME HERE/build/"
 
 ```
 
+Import the **[acf-fields-import.json](acf-fields-import.json)** file to use the standard content elements for ACF.
+
 ### Start & Build
 
 Run `npm start` to started with development.
 
 Run `npm build` to generate a production build for deployment.
+
+## Updating packages
+
+Run `npm outdated` to see outdated packages.
+
+Run `npm update` to update packages (minor versions only).
+
+Run `npm install package@latest --save-dev` to update major versions of packages.
 
 ## Adding React
 

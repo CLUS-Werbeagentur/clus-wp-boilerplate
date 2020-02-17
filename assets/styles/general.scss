@@ -6,3 +6,13 @@ html {
   line-height: 1.5;
   color: $color-black;
 }
+
+main {
+  max-width: $size-site;
+  width: $size-viewport;
+  margin: 0 auto;
+}
+
+.element {
+  margin: 5rem auto;
+}

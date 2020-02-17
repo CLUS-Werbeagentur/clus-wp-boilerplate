@@ -1,0 +1,273 @@
+[
+  {
+    "key": "group_5e46ba53af9ff",
+    "title": "Inhaltselemente",
+    "fields": [
+      {
+        "key": "field_5e46ba5f4b409",
+        "label": "",
+        "name": "contentelements",
+        "type": "flexible_content",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "layouts": {
+          "layout_5e46ba670773b": {
+            "key": "layout_5e46ba670773b",
+            "name": "text",
+            "label": "Text",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5e46ba6d4b40a",
+                "label": "",
+                "name": "content",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+              }
+            ],
+            "min": "",
+            "max": ""
+          },
+          "layout_5e4aac0e2de3b": {
+            "key": "layout_5e4aac0e2de3b",
+            "name": "images",
+            "label": "Bild(er)",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5e4aac332de3c",
+                "label": "Layout",
+                "name": "layout",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "choices": {
+                  "1": "Ein Bild",
+                  "2": "Zwei Bilder nebeneinander",
+                  "3-right": "Zwei Querformate links, ein Hochformat rechts",
+                  "3-left": "Ein Hochformat links, zwei Querformate rechts"
+                },
+                "default_value": [1],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+              },
+              {
+                "key": "field_5e4aac452de3d",
+                "label": "Bild",
+                "name": "image-1",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "33",
+                  "class": "",
+                  "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+              },
+              {
+                "key": "field_5e4aac512de3e",
+                "label": "Bild 2",
+                "name": "image-2",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "33",
+                  "class": "",
+                  "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+              },
+              {
+                "key": "field_5e4aac592de3f",
+                "label": "Bild 3 (Hochformat)",
+                "name": "image-3",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "33",
+                  "class": "",
+                  "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+              }
+            ],
+            "min": "",
+            "max": ""
+          },
+          "layout_5e4aac752de40": {
+            "key": "layout_5e4aac752de40",
+            "name": "image-text",
+            "label": "Bild & Text",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5e4aac922de41",
+                "label": "Layout",
+                "name": "layout",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "choices": {
+                  "image-right": "Text links, Bild rechts",
+                  "image-left": "Bild links, Text rechts"
+                },
+                "default_value": ["image-right"],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+              },
+              {
+                "key": "field_5e4aaca92de42",
+                "label": "Inhalt",
+                "name": "content",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "75",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+              },
+              {
+                "key": "field_5e4aacbb2de43",
+                "label": "Bild",
+                "name": "image",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "25",
+                  "class": "",
+                  "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+              }
+            ],
+            "min": "",
+            "max": ""
+          }
+        },
+        "button_label": "Element hinzufügen",
+        "min": "",
+        "max": ""
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "page"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+      "the_content",
+      "excerpt",
+      "discussion",
+      "comments",
+      "revisions",
+      "slug",
+      "author",
+      "format",
+      "featured_image",
+      "categories",
+      "tags",
+      "send-trackbacks"
+    ],
+    "active": true,
+    "description": ""
+  }
+]

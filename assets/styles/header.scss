@@ -1,1 +1,35 @@
-// Silence is golden
+header {
+  display: flex;
+  justify-content: space-between;
+  max-width: $size-site;
+  width: $size-viewport;
+  margin: 3rem auto;
+}
+
+.header__menu {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a:link,
+  a:visited {
+    color: $color-black;
+    transition: color $transition;
+  }
+
+  a:hover,
+  a:active {
+    // Silence is golden
+  }
+
+  > .current_page_item,
+  > .current-menu-parent {
+    > a:link,
+    > a:visited {
+      // Silence is golden
+    }
+  }
+}

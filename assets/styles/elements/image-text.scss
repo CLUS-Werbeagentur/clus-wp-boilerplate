@@ -1,0 +1,43 @@
+.element--image-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.image-text__image {
+  width: 49%;
+  flex: 0 0 49%;
+
+  @include s {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.image-text__text {
+  width: 49%;
+  flex: 0 0 49%;
+
+  @include s {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+}
+
+// Variation: Image left
+.image-text--image-left {
+  .image-text__image {
+    order: 1;
+  }
+
+  .image-text__text {
+    order: 2;
+  }
+}

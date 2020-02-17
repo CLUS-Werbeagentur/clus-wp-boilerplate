@@ -22,5 +22,6 @@ browserSync({
   proxy: {
     target: process.env.URL,
     middleware
-  }
+  },
+  files: ['*.php', '**/*.php']
 })

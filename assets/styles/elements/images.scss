@@ -1,0 +1,69 @@
+.element--images {
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.images--2 {
+  display: flex;
+  justify-content: space-between;
+
+  .image {
+    max-width: 49%;
+    flex: 0 0 49%;
+  }
+}
+
+.images--3-left,
+.images--3-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  .image--1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .images__landscape {
+    max-width: 49%;
+    flex: 0 0 49%;
+  }
+
+  .images__portrait {
+    position: relative;
+    width: 49%;
+    max-width: 49%;
+    flex: 0 0 49%;
+    overflow: hidden;
+  }
+
+  .image--3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+.images--3-left {
+  .images__landscape {
+    order: 2;
+  }
+
+  .images__portrait {
+    order: 1;
+  }
+}
