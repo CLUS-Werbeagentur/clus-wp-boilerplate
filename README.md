@@ -36,6 +36,8 @@ PUBLIC_PATH="/wp-content/themes/YOUR THEME NAME HERE/build/"
 
 ```
 
+### ACF fields
+
 Import the **[acf-fields-import.json](acf-fields-import.json)** file to use the standard content elements for ACF.
 
 ### Start & Build
