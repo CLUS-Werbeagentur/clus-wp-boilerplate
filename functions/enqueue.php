@@ -34,4 +34,4 @@ add_action( 'wp_enqueue_scripts', 'clus_scripts' );
 
 // Editor style
 //----------------------------------------------------------
-add_editor_style( 'editor-style.css' ); ?>
+add_editor_style( 'editor-styles.css' ); ?>
