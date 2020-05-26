@@ -67,7 +67,7 @@ add_theme_support( 'title-tag' );
 add_action( 'after_setup_theme', 'register_menu' );
 
 function register_menu() {
-  register_nav_menu( 'primary', 'Hauptmenü' );
+  register_nav_menu( 'main', 'Hauptmenü' );
 }
 
 // Disable support for comments and trackbacks in post types
