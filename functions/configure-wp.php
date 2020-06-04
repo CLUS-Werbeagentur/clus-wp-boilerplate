@@ -30,6 +30,7 @@ function remove_dashboard_meta() {
   remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
   remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
   remove_meta_box('dashboard_activity', 'dashboard', 'normal');
+  remove_meta_box('dashboard_site_health', 'dashboard', 'normal');
 }
 add_action('admin_init', 'remove_dashboard_meta');
 
