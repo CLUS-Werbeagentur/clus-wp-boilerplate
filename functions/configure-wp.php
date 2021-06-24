@@ -160,4 +160,12 @@ function disable_emojis_remove_dns_prefetch($urls, $relation_type) {
   return $urls;
 }
 
+// Wrapper around iframes etc Youtube links in WYSIWYG editor
+// example for use :   
+//     echo responsive_youtube(get_sub_field('content')); 
+//----------------------------------------------------------
+function responsive_youtube($html) {
+  return str_replace(['<iframe', '</iframe>'], ['<div class="embed-responsive"><iframe', '</iframe></div>'], $html);
+}
+
 ?>
